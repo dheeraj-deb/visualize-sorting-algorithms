@@ -1,6 +1,8 @@
 const barContainer = document.getElementById('bar_container');
 const newArrayBtn = document.getElementById('new_array');
 const bubbleSort = document.getElementById('bubble');
+const selectionSort = document.getElementById('selection');
+const quickSort = document.getElementById('quick');
 
 let bars = new Array();
 
@@ -58,5 +60,26 @@ bubbleSort.addEventListener('click', async () => {
         }
     }
 })
+
+// selection sort
+selectionSort.addEventListener('click', async () => {
+    let nodes = barContainer.childNodes;
+    let i, j;
+    for (i = 1; i < nodes.length; i++) {
+        for (j = i; j < nodes.length; j++) {
+            if (parseInt(nodes[i].style.height) > parseInt(nodes[j].style.height)) {
+                nodes[i].style.background = "black";
+                nodes[j].style.background = "black";
+                await swap(nodes[i], nodes[j])
+                // nodes[j + 1].style.background = "green";
+            } else {
+                nodes[i].style.background = "red";
+                nodes[j].style.background = "red";
+            }
+        }
+    }
+})
+
+
 
 start()
